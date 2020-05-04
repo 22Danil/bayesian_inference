@@ -1,8 +1,6 @@
-from sklearn.datasets import make_regression, make_classification
+from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
-from sklearn.preprocessing import normalize
-from sklearn.naive_bayes import GaussianNB
 from sklearn import metrics, linear_model
 
 import matplotlib.pyplot as plt
@@ -15,7 +13,7 @@ import time
 class Regression:
     """Class. Обучение, построение графиков"""
     def __init__(self, features, targetVariables):
-        """Constructor. X - выборка признаков, Y - целевая переменаня"""
+        """Constructor. features - выборка признаков, targetVariables - целевая переменаня"""
         self.features = features
         self.targetVariables = targetVariables
         self.TRAIN_SIZE = 0.7
@@ -32,13 +30,9 @@ class Regression:
         
         score = cross_val_score(BayesRidge, feature_train, target_train, cv = 10, scoring="r2")
         score_cross_val = score.mean()
-        #scoreTrain[0].append(score.mean())
         target_pred = BayesRidge.predict(feature_test)
         score_train = metrics.r2_score(target_test, target_pred)
         return BayesRidge, self.trainTime, score_cross_val, score_train
-
-    def splitting(self):
-        return train_test_split(X, Y, train_size=TRAIN_SIZE, random_state=3)
 
     def makeData(size:int = 50000, features:int = 2, informative:int = 2):
         """Генерация выборки для регрессии."""
