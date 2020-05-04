@@ -35,7 +35,7 @@ class Classification:
         target_pred = Bayes.predict(feature_test)
         score_train = metrics.accuracy_score(target_test, target_pred)
 
-        plt.title('Сгенерированная выборка')
+        plt.title('Предсказание обученой модели')
         plt.scatter(feature_test[:, 0], feature_test[:, 1], c=target_pred)
         plt.show()
         
@@ -50,7 +50,6 @@ class Classification:
             plt.show()
             return features, targetVariables
         except Exception :
-            #print("You cannot divide by zero!")
             return 0, 0
 
 

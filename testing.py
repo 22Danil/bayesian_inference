@@ -1,32 +1,27 @@
+
+
+'''
 import bayesianInference.regression as BI
-#import bayesianInference.classification as classif
 
+x, y = BI.Regression.makeData()
+BI.Regression.distribution(y)
 
-#print(len(classif.Regression.makeData()))
-
-
-#print(len(BI.Regression.makeData()))
-
-
-#a = BI.Regression()
-
-#x, y = a.makeData()BayesRidge, self.trainTime, score_cross_val, score_train
-
-
-try:
-    x, y = BI.Regression.makeData()
-    #BI.Regression.distribution(y)
-    model = BI.Regression(x, y)
-    mod, time_tr, score_cross, score_train = model.training()
-    print(mod)
-    print(time_tr)
-    print(score_cross)
-    print(score_train)
-except Exception :
-    print(Exception)
-    #print(y)
+model = BI.Regression(x, y)
+mod, time_tr, score_cross, score_train = model.training()
+print("Время обучени - ", '%.5f'%(time_tr))
+print("Точность при кроссвалидации - ", '%.4f'%(score_cross))
+print("Точность на тестовой выборке - ", '%.4f'%(score_train))
+'''
 
 
 
+'''
+import bayesianInference.classification as NB
+x, y = NB.Classification.makeData()
+model = NB.Classification(x, y)
+mod, time_tr, score_cross, score_train = model.training()
+print("Время обучени - ", '%.5f'%(time_tr))
+print("Точность при кроссвалидации - ", score_cross)
+print("Точность на тестовой выборке - ", score_train)
+'''
 
-#print(a.test())

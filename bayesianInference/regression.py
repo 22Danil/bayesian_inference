@@ -40,15 +40,14 @@ class Regression:
             features, targetVariables = make_regression(n_samples=size, n_features=features, n_informative=informative, n_targets=1, bias=0.0, random_state=42)
             return features, targetVariables
         except Exception :
-            #print("You cannot divide by zero!")
             return 0, 0
         
     def distribution(targetVariables):
         """Возвращает плотность вероятности целевой переменной"""
         mu = targetVariables.mean()
-        print("МЮ - ", mu)
+        print("μ (мю) - ", '%.3f'%(mu))
         sigma = targetVariables.std()
-        print("Sigma - ", sigma)
+        print("σ (сигма) - ", '%.3f'%(sigma))
         norm_rv = sts.norm(loc=mu, scale=sigma)
 
         df = pd.DataFrame(targetVariables, columns=['KDE'])
